@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+
+{% block title %}
+Faculties
+{% endblock %}
+
+{% block content %}
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+
+    <div>
+
+        <h1 class="display-6 mb-1">
+            Faculties
+        </h1>
+
+        <p class="text-muted mb-0">
+            All academic faculties in the system
+        </p>
+
+    </div>
+
+    <span class="badge bg-primary fs-6">
+        {{ faculties|length }} Faculties
+    </span>
+
+</div>
+
+<div class="card shadow-sm">
+
+    <div class="card-body">
+
+        <div class="row">
+
+            {% for faculty in faculties %}
+
+            <div class="col-md-6 col-lg-4 mb-3">
+
+                <div class="card border-0 shadow-sm h-100">
+
+                    <div class="card-body">
+
+                        <h5 class="card-title mb-0">
+                            {{ faculty.name }}
+                        </h5>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            {% empty %}
+
+            <div class="col-12">
+
+                <div class="alert alert-warning">
+                    No faculties found.
+                </div>
+
+            </div>
+
+            {% endfor %}
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

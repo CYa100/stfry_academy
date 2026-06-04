@@ -1,0 +1,98 @@
+{% extends "base_management.html" %}
+
+{% block title %}Management Dashboard{% endblock %}
+
+{% block content %}
+
+<h2 class="mb-4">Management Dashboard</h2>
+
+<div class="row g-3">
+
+    <!-- Faculties -->
+    <div class="col-md-4">
+        <div class="card shadow-sm">
+            <div class="card-body">
+                <h5>Faculties</h5>
+                <p class="text-muted">Manage university faculties</p>
+                <a href="{% url 'faculty_management' %}" class="btn btn-primary btn-sm">
+                    Open
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Lessons -->
+    <div class="col-md-4">
+        <div class="card shadow-sm">
+            <div class="card-body">
+                <h5>Lessons</h5>
+                <p class="text-muted">Manage lessons and courses</p>
+                <a href="{% url 'lesson_management' %}" class="btn btn-primary btn-sm">
+                    Open
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Classes -->
+    <div class="col-md-4">
+        <div class="card shadow-sm">
+            <div class="card-body">
+                <h5>Classes</h5>
+                <p class="text-muted">Manage classrooms</p>
+                <a href="{% url 'class_management' %}" class="btn btn-primary btn-sm">
+                    Open
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Dorms -->
+    <div class="col-md-4">
+        <div class="card shadow-sm">
+            <div class="card-body">
+                <h5>Dorms</h5>
+                <p class="text-muted">Manage dormitories</p>
+                <a href="{% url 'dorm_management' %}" class="btn btn-primary btn-sm">
+                    Open
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Users -->
+    <div class="col-md-4">
+        <div class="card shadow-sm">
+            <div class="card-body">
+                <h5>Users</h5>
+                <p class="text-muted">Manage students and staff</p>
+                <a href="{% url 'user_management' %}" class="btn btn-primary btn-sm">
+                    Open
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Enrollments -->
+    <div class="col-md-4">
+        <div class="card shadow-sm">
+            <div class="card-body">
+                <h5>Enrollments</h5>
+                <p class="text-muted">Class registrations</p>
+                <a href="{% url 'enrollment_management' %}" class="btn btn-primary btn-sm">
+                    Open
+                </a>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<hr class="mt-4">
+
+<p class="text-muted">
+    Welcome back, <strong>{{ request.user.first_name }}</strong>.
+    Role: <strong>{{ request.user.role }}</strong>
+</p>
+
+{% endblock %}

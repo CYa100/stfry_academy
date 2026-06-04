@@ -1,0 +1,120 @@
+{% extends "base.html" %}
+
+{% block title %}
+{{ classroom.name }}
+{% endblock %}
+
+{% block content %}
+
+<div class="mb-4">
+
+    <h1 class="display-6">
+        {{ classroom.name }}
+    </h1>
+
+    <p class="text-muted">
+        Lesson: {{ classroom.lesson.name }}
+    </p>
+
+</div>
+
+<!-- CLASS INFO CARD -->
+<div class="card shadow-sm mb-4">
+
+    <div class="card-body">
+
+        <h5 class="card-title">
+            Classroom Info
+        </h5>
+
+        <p class="mb-0">
+            This classroom contains all enrolled users and their roles.
+        </p>
+
+    </div>
+
+</div>
+
+<!-- USERS SECTION -->
+<div class="d-flex justify-content-between align-items-center mb-3">
+
+    <h3>
+        Enrolled Users
+    </h3>
+
+    <span class="badge bg-primary">
+        {{ enrollments|length }} Users
+    </span>
+
+</div>
+
+<div class="card shadow-sm">
+
+    <div class="card-body">
+
+        <div class="table-responsive">
+
+            <table class="table table-hover align-middle">
+
+                <thead class="table-dark">
+
+                    <tr>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Username</th>
+                        <th>Role</th>
+                        <th>Dorm</th>
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    {% for enrollment in enrollments %}
+
+                    <tr>
+
+                        <td>{{ enrollment.user.first_name }}</td>
+                        <td>{{ enrollment.user.last_name }}</td>
+
+                        <td>
+                            <strong>
+                                {{ enrollment.user.username }}
+                            </strong>
+                        </td>
+
+                        <td>
+                            <span class="badge bg-secondary">
+                                {{ enrollment.role }}
+                            </span>
+                        </td>
+
+                        <td>
+                            {{ enrollment.user.dorm|default:"-" }}
+                        </td>
+
+                    </tr>
+
+                    {% empty %}
+
+                    <tr>
+
+                        <td colspan="5" class="text-center text-muted">
+                            No users enrolled in this classroom.
+                        </td>
+
+                    </tr>
+
+                    {% endfor %}
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

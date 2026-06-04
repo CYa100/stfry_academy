@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+
+{% block title %}
+Dashboard
+{% endblock %}
+
+{% block content %}
+
+<div class="mb-4">
+
+    <h1 class="display-5">
+        Dashboard
+    </h1>
+
+    <p class="lead">
+        Welcome {{ request.user.first_name }}
+    </p>
+
+</div>
+
+<div class="card shadow-sm mb-3">
+
+    <div class="card-body">
+
+        <h5 class="card-title">
+            User Information
+        </h5>
+
+        <table class="table">
+
+            <tr>
+                <th>Username</th>
+                <td>{{ request.user.username }}</td>
+            </tr>
+
+            <tr>
+                <th>Role</th>
+                <td>{{ request.user.role }}</td>
+            </tr>
+
+            <tr>
+                <th>Email</th>
+                <td>{{ request.user.email }}</td>
+            </tr>
+
+        </table>
+
+    </div>
+
+</div>
+
+{% if request.user.role == "admin" %}
+
+<div class="card border-danger shadow-sm">
+
+    <div class="card-body">
+
+        <h5 class="card-title text-danger">
+            Administration
+        </h5>
+
+        <p>
+            Access the management panel to perform CRUD operations.
+        </p>
+
+        <a href="{% url 'management_dashboard' %}"
+           class="btn btn-danger">
+            Open Management Panel
+        </a>
+
+    </div>
+
+</div>
+
+{% endif %}
+
+{% endblock %}

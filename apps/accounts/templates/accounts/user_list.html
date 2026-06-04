@@ -1,0 +1,104 @@
+{% extends "base.html" %}
+
+{% block title %}
+Users
+{% endblock %}
+
+{% block content %}
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+
+    <div>
+
+        <h1 class="display-6 mb-1">
+            User List
+        </h1>
+
+        <p class="text-muted mb-0">
+            Registered users in the academy system
+        </p>
+
+    </div>
+
+    <span class="badge bg-primary fs-6">
+        {{ users|length }} Users
+    </span>
+
+</div>
+
+<div class="card shadow-sm">
+
+    <div class="card-body">
+
+        <div class="table-responsive">
+
+            <table class="table table-striped table-hover align-middle">
+
+                <thead class="table-dark">
+
+                    <tr>
+                        <th>ID</th>
+                        <th>Username</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+			<th>Role</th>
+			<th>Rank</th>
+			<th>Status</th>
+			<th>Dorm</th>
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    {% for user in users %}
+
+                    <tr>
+
+                        <td>{{ user.id }}</td>
+
+                        <td>
+                            <strong>
+                                {{ user.username }}
+                            </strong>
+                        </td>
+
+                        <td>{{ user.first_name }}</td>
+
+                        <td>{{ user.last_name }}</td>
+
+			<td>{{ user.role }}</td>
+
+			<td>{{ user.rank }}</td>
+
+			<td>{{ user.status }}</td>
+
+			<td>{{ user.dorm }}</td>
+
+                    </tr>
+
+                    {% empty %}
+
+                    <tr>
+
+                        <td colspan="4" class="text-center text-muted">
+
+                            No users found.
+
+                        </td>
+
+                    </tr>
+
+                    {% endfor %}
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

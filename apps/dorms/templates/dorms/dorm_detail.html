@@ -1,0 +1,138 @@
+{% extends "base.html" %}
+
+{% block title %}
+    {{ dorm.name }}
+{% endblock %}
+
+{% block content %}
+
+<!-- HEADER -->
+<div class="mb-4">
+
+    <h1 class="display-6 mb-1">
+        {{ dorm.name }}
+    </h1>
+
+    <p class="text-muted">
+        Dormitory detail page
+    </p>
+
+</div>
+
+<!-- INFO CARD -->
+<div class="card shadow-sm mb-4">
+
+    <div class="card-body">
+
+        <div class="row">
+
+            <div class="col-md-6">
+
+                <h5>Capacity</h5>
+                <p class="fs-5">
+                    {{ dorm.capacity }}
+                </p>
+
+            </div>
+
+            <div class="col-md-6">
+
+                <h5>Occupancy</h5>
+                <p class="text-muted">
+                    Students assigned to this dorm
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- STUDENTS TABLE -->
+<div class="card shadow-sm">
+
+    <div class="card-header bg-white">
+
+        <h5 class="mb-0">
+            Students
+        </h5>
+
+    </div>
+
+    <div class="card-body p-0">
+
+        <div class="table-responsive">
+
+            <table class="table table-striped mb-0 align-middle">
+
+                <thead class="table-light">
+
+                    <tr>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Username</th>
+                        <th>Role</th>
+                        <th>Status</th>
+			<th>Rank</th>
+                        <th>Telephone</th>
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    {% for user in users %}
+
+                    <tr>
+
+                        <td>{{ user.first_name }}</td>
+                        <td>{{ user.last_name }}</td>
+                        <td>{{ user.username }}</td>
+
+                        <td>
+                            <span class="badge bg-secondary black">
+                                {{ user.role }}
+                            </span>
+                        </td>
+
+                        <td>
+                            <span class="badge bg-info text-dark orange">
+                                {{ user.status }}
+                            </span>
+                        </td>
+
+			<td>
+			    <span class="badge bg-info text-dark purple">
+				{{ user.rank }}
+			    </span>
+			</td>
+
+                        <td>
+                            {{ user.telephone|default:"-" }}
+                        </td>
+
+                    </tr>
+
+                    {% empty %}
+
+                    <tr>
+                        <td colspan="7" class="text-center text-muted py-4">
+                            No students assigned to this dorm
+                        </td>
+                    </tr>
+
+                    {% endfor %}
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+
+{% block title %}
+Dorms
+{% endblock %}
+
+{% block content %}
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+
+    <div>
+
+        <h1 class="display-6 mb-1">
+            Dorms
+        </h1>
+
+        <p class="text-muted mb-0">
+            Student dormitory buildings and details
+        </p>
+
+    </div>
+
+    <span class="badge bg-primary fs-6">
+        {{ dorms|length }} Dorms
+    </span>
+
+</div>
+
+<div class="card shadow-sm">
+
+    <div class="card-body">
+
+        <div class="row">
+
+            {% for dorm in dorms %}
+
+            <div class="col-md-6 col-lg-4 mb-3">
+
+                <div class="card h-100 border-0 shadow-sm">
+
+                    <div class="card-body">
+
+                        <h5 class="card-title mb-3">
+                            {{ dorm.name }}
+                        </h5>
+
+                        <a href="{% url 'dorm_detail' dorm.id %}" 
+                           class="btn btn-outline-primary btn-sm">
+
+                            View Details
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            {% empty %}
+
+            <div class="col-12">
+
+                <div class="alert alert-warning">
+                    No dorms found.
+                </div>
+
+            </div>
+
+            {% endfor %}
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

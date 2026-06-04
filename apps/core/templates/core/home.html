@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block title %}
+Home
+{% endblock %}
+
+{% block content %}
+
+<div class="text-center">
+
+    <h1 class="display-5">
+        STFRY Academy System
+    </h1>
+
+    <p class="lead text-muted">
+        Welcome to Academy
+    </p>
+
+    {% if request.user.is_authenticated %}
+
+        <div class="alert alert-success mt-4">
+
+            Logged in as
+            <strong>{{ request.user.username }}</strong>
+
+        </div>
+
+    {% else %}
+
+        <div class="alert alert-info mt-4">
+
+            Please login to access the system.
+
+        </div>
+
+    {% endif %}
+
+</div>
+
+{% endblock %}
